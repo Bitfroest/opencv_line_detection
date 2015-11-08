@@ -23,5 +23,7 @@ bool OpencvLineDetection::cycle() {
     cv::Canny(edge, edge, edgeThresh, edgeThresh*3, 3);
     cedge = cv::Scalar::all(0);
 
+    imagen.copyTo(cedge, edge);
+    cv::imshow("bla",cedge);
     return true;
 }
