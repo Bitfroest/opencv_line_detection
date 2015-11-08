@@ -1,6 +1,13 @@
 #include "opencv_line_detection.h"
+#include <lms/imaging/converter.h>
 
 bool OpencvLineDetection::initialize() {
+    //get the default config
+    config = getConfig();
+
+
+    image = datamanager()->readChannel<lms::imaging::Image>(this,"IMAGE");
+
     return true;
 }
 
@@ -9,5 +16,12 @@ bool OpencvLineDetection::deinitialize() {
 }
 
 bool OpencvLineDetection::cycle() {
+    cv::Mat imagen = image->convertToOpenCVMat();
+    cv::blur(imagen, edge, cv::Size(3,3));
+
+    // Run the edge detector on grayscale
+    cv::Canny(edge, edge, edgeThresh, edgeThresh*3, 3);
+    cedge = cv::Scalar::all(0);
+
     return true;
 }
