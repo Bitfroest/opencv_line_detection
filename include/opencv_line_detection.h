@@ -7,6 +7,15 @@
 #include "lms/module_config.h"
 #include "opencv2/opencv.hpp"
 
+#include "opencv2/core/utility.hpp"
+#include "opencv2/imgproc.hpp"
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/highgui.hpp"
+
+#include <stdio.h>
+
+#include <opencv_utils.h>
+
 class OpencvLineDetection : public lms::Module {
 public:
     bool initialize();
@@ -17,7 +26,7 @@ public:
      * @brief image the image to work with
      */
     const lms::imaging::Image* image;
-
+    lms::imaging::Image *outputImage;
     cv::Mat edge, cedge;
     int edgeThresh = 1;
 };

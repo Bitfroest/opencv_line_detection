@@ -9,4 +9,4 @@ set(HEADERS
 
 include_directories(include)
 add_library(opencv_line_detection MODULE ${SOURCES} ${HEADERS})
-target_link_libraries(opencv_line_detection PRIVATE lmscore)
+target_link_libraries(opencv_line_detection PRIVATE lmscore imaging opencv_binding)
