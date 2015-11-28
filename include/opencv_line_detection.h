@@ -11,6 +11,7 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
 
 #include <stdio.h>
 
@@ -28,7 +29,7 @@ public:
     const lms::imaging::Image* image;
     lms::imaging::Image *outputImage;
     cv::Mat edge, cedge;
-    int edgeThresh = 1;
+    int edgeThresh = 100;
 };
 
 #endif // OPENCV_LINE_DETECTION_H
